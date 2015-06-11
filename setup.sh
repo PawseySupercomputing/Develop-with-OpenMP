@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash
 
 # This script sets up the directory hierarchy for tutoiral
 
