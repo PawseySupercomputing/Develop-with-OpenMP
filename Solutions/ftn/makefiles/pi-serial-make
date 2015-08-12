@@ -2,7 +2,9 @@ CC=cc
 F90=ftn
 PRGENV=${PE_ENV}
 CFLAGS=-g
-SOURCE=.
+SOURCE=pi-serial
+OBJ=$(SOURCE).o
+EXE=$(SOURCE).out
 
 ifeq ($(PRGENV),INTEL)
 	OMP_FLAG=-openmp
@@ -12,9 +14,12 @@ else ifeq ($(PRGENV),CRAY)
 	OMP_FLAG=-homp
 endif 
 
-all: serial
 
-serial:
-	$(F90) $(CFLAGS) $(SOURCE)/pi-serial.f90 -o pi-serial $(OMP_FLAG)
+%.o: %.f90 
+	$(F90) -c -o $@ $< $(CFLAGS) $(OMP_FLAG)
+
+serial: $(OBJ)
+	$(F90) $(CFLAGS) $(OBJ) -o $(EXE) $(OMP_FLAG)
+
 clean:
-	rm -rf pi-serial
+	rm -rf $(EXE) $(OBJ)
