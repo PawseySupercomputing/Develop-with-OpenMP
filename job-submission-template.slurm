@@ -3,6 +3,7 @@
 #SBATCH --account=courses01
 #SBATCH --reservation=courseq
 #SBATCH --job-name=openmp-tutorial
+#SBATCH --reservation=courseq
 #SBATCH --cpus-per-task=4
 #SBATCH --time=00:10:00
 #SBATCH --export=NONE
