@@ -3,11 +3,7 @@
 #SBATCH --account=courses01
 #SBATCH --reservation=courseq
 #SBATCH --job-name=openmp-tutorial
-#SBATCH --cpus-per-task=1
 #SBATCH --time=00:20:00
-#SBATCH --reservation=courseq
-#SBATCH --cpus-per-task=4
-#SBATCH --time=00:10:00
 #SBATCH --export=NONE
 
 # To change the number of threads, alter the cpus-per-task directive 
