@@ -16,19 +16,7 @@ static long num_steps=1000000000;
 double step;
 int main (int argc, char* argv[]){
 	double start,stop,diff_time;
-	// Capture user defined num_steps from command line
-	if (argc>1){
-		int indx;
-		for (indx=0; indx < argc; indx++){
-			if (argv[indx][0] == '-') {
-				if (argv[indx][1] == 'n') {
-					num_steps = (long) (atoi(argv[indx+1]));
-				}
-			}
-		}
-	}
-
-	int i;
+	long i;
 	double x,pi,sum=0.0;
 
 	start= omp_get_wtime();  
@@ -44,8 +32,8 @@ int main (int argc, char* argv[]){
 	stop= omp_get_wtime();
 
 	diff_time = (double) (stop-start);
-	printf ("Estimated value of pi = %2.16lf\n",pi);
-	printf ("Error = %2.16lf\n",fabs(PI_ref - pi));
+	printf ("Estimated value of pi = %2.15lf\n",pi);
+	printf ("Error = %2.15lf\n",fabs(PI_ref - pi));
 	printf ("Compute time= %2.5lf seconds\n",diff_time);
 
 }
