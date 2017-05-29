@@ -6,7 +6,7 @@
 #SBATCH --time=00:20:00
 #SBATCH --export=NONE
 
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=5
 
 aprun -n 1 -d ${OMP_NUM_THREADS} -j 1 ./hello-omp.out
 
