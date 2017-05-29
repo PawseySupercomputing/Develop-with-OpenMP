@@ -15,7 +15,6 @@ real*8 :: summation=0.0
 real   :: start,finish,omp_get_wtime
 start=omp_get_wtime()
 step = 1/(1.0 * num_steps)
-! Consider parallelizing the loop as the profile shows it is a hotspot
 	do i =1,num_steps
  ! Write an algorithm which first evaluates the 
  ! 	evaluate midpoint of ith rectangle (x_i)
