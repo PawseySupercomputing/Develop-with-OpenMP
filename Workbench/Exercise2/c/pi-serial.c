@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+/* Including OpenMP header to call the timing function from API
+ * to estimate compute_time*/
 #include <omp.h>
 
 // Reference value to estimate error
@@ -19,23 +21,28 @@ double step;
 int main (int argc, char* argv[]){
   double start,stop;
   double diff_time;
-
   long i;
   double x,pi,sum=0.0;
 
+  printf ("Requested number of steps = %ld\n",num_rects);
   start= omp_get_wtime();   
-  step = 1.0 / (double) num_rects;
+ // Calculate delta x. Hint: reciprocal of num_rects
+  step = 1/(double) num_rects;
+  
         
   for (i=0; i<num_rects; i++){
-        x=(i+0.5) * step;
-        sum = sum + 4.0/(1.0+(x*x));
+/*
+ * Write an algorithm which first evaluates the 
+ * 	evaluate midpoint of ith rectangle (x_i)
+ * 	updates the sum by evaluating f(x) at x
+ */
   }
 
-  pi = step * sum ;
-  stop=omp_get_wtime();
+  //Update value of pi 
+  stop= omp_get_wtime();
   diff_time = stop-start;
-  printf ("Estimated value of pi = %2.16lf\n",pi);
-  printf ("Error = %2.16lf\n",fabs(PI_ref - pi));
+  printf ("Estimated value of pi = %2.15lf\n",pi);
+  printf ("Error = %2.15lf\n",fabs(PI_ref - pi));
   printf ("Compute time= %2.5lf seconds\n",diff_time);
 
 }
