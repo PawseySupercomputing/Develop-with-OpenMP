@@ -9,8 +9,8 @@
 !			b. Each thread then prints its thread ID.
 !
 program hello90
+integer:: id,nthreads,omp_get_thread_num,omp_get_num_threads
 !Initialize omp parallel
-        integer:: id
 ! Call environment query to get thread id.
 ! Each thread then writes its thread id to stdout.
 !end parallel
