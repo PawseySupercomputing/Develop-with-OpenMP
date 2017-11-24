@@ -1,5 +1,5 @@
 program hello90
-	integer:: id, nthreads
+	integer:: id, nthreads,omp_get_thread_num,omp_get_num_threads
 	!$omp parallel private(id)
 id = omp_get_thread_num()
 	write (*,*) 'Hello World from thread', id
